@@ -4,7 +4,6 @@ import "./globals.css";
 import React from "react";
 import { Search, Menu, MessageCircle, AlertCircle, Phone, Mail, MapPin } from "lucide-react";
 
-// Fonte moderna estilo portal de notícias (globo.com)
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
@@ -39,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="pt-BR" className={`${jakarta.variable} scroll-smooth`}>
       <body className="min-h-screen flex flex-col justify-between antialiased">
         
-        {/* 1. TICKER DE PLANTÃO ARREDONDADO */}
+        {/* 1. TICKER DE PLANTÃO */}
         <div className="bg-[#FF0808] text-white py-2 px-4 text-xs font-bold uppercase tracking-wide flex items-center shadow-sm">
           <div className="container mx-auto flex items-center gap-3 overflow-hidden">
             <span className="bg-white text-[#FF0808] px-3 py-1 rounded-full text-[11px] font-black animate-pulse flex items-center gap-1 shrink-0 shadow-sm">
@@ -61,7 +60,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <header className="bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 px-4 sticky top-0 z-40 shadow-sm transition-all">
           <div className="container mx-auto flex items-center justify-between gap-6">
             
-            {/* LOGO OFICIAL EM DESTAQUE */}
             <a href="/" className="flex items-center group shrink-0 py-1">
               <img
                 src="/logo.png"
@@ -70,7 +68,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               />
             </a>
 
-            {/* BUSCA E BOTÕES ARREDONDADOS (ESTILO GLOBO.COM) */}
             <div className="hidden lg:flex items-center gap-4">
               <form action="/#noticias" className="relative">
                 <input
@@ -87,7 +84,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 href="/envie-noticia"
                 className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold px-5 py-2.5 rounded-full text-xs transition uppercase tracking-wider"
               >
-                Envie Notúncia
+                Envie Notícia
               </a>
 
               <a
@@ -98,7 +95,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               </a>
             </div>
 
-            {/* MENU MOBILE */}
             <div className="lg:hidden flex items-center gap-2">
               <a href="/anuncie" className="bg-[#FF0808] text-white text-xs font-bold px-4 py-2 rounded-full uppercase shadow">
                 Anuncie
@@ -131,7 +127,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {/* 4. CONTEÚDO */}
         <div className="flex-grow">{children}</div>
 
-        {/* 5. WHATSAPP FLUTUANTE ARREDONDADO */}
+        {/* 5. WHATSAPP FLUTUANTE */}
         <a
           href="https://wa.me/5519999999999?text=Olá,%20gostaria%20de%20falar%20com%20o%20Tambaú%20Online"
           target="_blank"
@@ -142,12 +138,19 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <MessageCircle size={30} />
         </a>
 
-        {/* 6. FOOTER MODERNO */}
+        {/* 6. FOOTER CORRIGIDO COM CARD BRANCO PARA A LOGO */}
         <footer className="bg-[#121214] text-white border-t-4 border-[#0808F5] mt-20 rounded-t-3xl">
           <div className="container mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-4 gap-10 text-xs">
             
             <div className="space-y-4">
-              <img src="/logo.png" alt="Tambaú Online" className="h-20 w-auto object-contain brightness-0 invert" />
+              {/* CARD BRANCO PARA DESTACAR A LOGO NÍTIDA */}
+              <div className="bg-white p-3.5 rounded-2xl inline-block shadow-md">
+                <img 
+                  src="/logo.png" 
+                  alt="Tambaú Online" 
+                  className="h-14 w-auto object-contain" 
+                />
+              </div>
               <p className="text-gray-400 leading-relaxed font-normal">
                 O portal oficial de informação, serviços, classificados e notícias de Tambaú, São Paulo.
               </p>
