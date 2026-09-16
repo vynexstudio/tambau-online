@@ -9,10 +9,10 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          blue: "#0808F5",
-          red: "#FF0808",
-          bg: "#F5F6F8",
-          text: "#222222",
+          blue: "#0808F5",   // Azul Intenso Oficial
+          red: "#FF0808",    // Vermelho Destaque Oficial
+          bg: "#F5F6F8",     // Cinza Muito Claro
+          text: "#222222",   // Cinza Escuro Texto
         },
       },
     },
