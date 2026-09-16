@@ -1,205 +1,46 @@
-import React from 'react';
-import { Cross, ArrowRight, Building2, Briefcase, Sparkles, TrendingUp } from 'lucide-react';
+import { ArrowRight, Bell, CalendarDays, ChevronRight, Clock3, Cross, TrendingUp } from "lucide-react"
+
+const secondaryNews = [
+  { category: "SEGURANÇA", title: "Polícia Militar reforça patrulhamento na área comercial", time: "09:15" },
+  { category: "ESPORTES", title: "Campeonato Amador começa neste domingo no Estádio Municipal", time: "08:37" },
+  { category: "SAÚDE", title: "Campanha de vacinação atende em todos os postos da cidade", time: "Ontem" },
+]
+
+const latestNews = [
+  { category: "CIDADE", title: "Prefeitura anuncia novos recursos para estradas rurais e escoamento agrícola", summary: "Investimento melhora o acesso dos produtores e o transporte da produção local.", image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=500&q=80" },
+  { category: "REGIÃO", title: "Defesa Civil orienta moradores para a chegada de frente fria", summary: "Previsão indica queda de temperatura e possibilidade de chuvas fortes nos próximos dias.", image: "https://images.unsplash.com/photo-1534274988757-a28bf1a57c17?auto=format&fit=crop&w=500&q=80" },
+  { category: "ECONOMIA", title: "Comércio local prepara programação especial para o fim de semana", summary: "Lojas e restaurantes do centro terão horários especiais e atrações para as famílias.", image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&q=80" },
+]
 
 export default function Home() {
   return (
-    <main className="container mx-auto px-4 py-8 space-y-10">
-      
-      {/* BANNER PUBLICITÁRIO ARREDONDADO */}
-      <div className="w-full bg-white p-3 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center justify-center">
-        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1.5">Publicidade Patrocinada</span>
-        <div className="w-full h-28 bg-gradient-to-r from-blue-900 via-blue-700 to-indigo-900 rounded-xl flex items-center justify-between px-8 text-white shadow-inner">
-          <div>
-            <span className="bg-[#FF0808] text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider">Super Oferta</span>
-            <h4 className="text-lg sm:text-xl font-extrabold mt-1">Sua Empresa em Destaque no Tambaú Online</h4>
-            <p className="text-xs text-blue-100 font-medium hidden sm:block">Alcance milhares de moradores de Tambaú diariamente.</p>
-          </div>
-          <a href="/anuncie" className="bg-[#FF0808] hover:bg-red-700 text-white text-xs font-black px-5 py-2.5 rounded-full transition shadow-md hover:scale-105">
-            ANUNCIAR AGORA
-          </a>
+    <main className="container mx-auto flex max-w-7xl flex-col gap-10 px-4 py-8 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden rounded-[2rem] bg-slate-950 px-6 py-7 text-white shadow-xl sm:px-10">
+        <div className="absolute inset-y-0 right-0 w-1/2 bg-[radial-gradient(circle_at_center,_rgba(37,99,235,0.38),_transparent_68%)]" />
+        <div className="relative flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
+          <div><span className="mb-2 inline-flex rounded-full bg-red-500/15 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-red-300">Publicidade local</span><h2 className="max-w-xl text-xl font-extrabold tracking-tight sm:text-2xl">Sua marca merece estar onde Tambaú presta atenção.</h2><p className="mt-2 text-sm text-slate-300">Conecte seu negócio a milhares de leitores todos os dias.</p></div>
+          <a href="/anuncie" className="inline-flex shrink-0 items-center gap-2 rounded-full bg-red-500 px-5 py-3 text-xs font-black uppercase tracking-wide transition hover:bg-red-400">Anuncie agora <ArrowRight data-icon="inline-end" /></a>
         </div>
-      </div>
-
-      {/* BLOCO PRINCIPAL: MATÉRIA EM DESTAQUE COM CANTOS ARREDONDADOS */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        {/* Notícia Principal (8 Cols) */}
-        <div className="lg:col-span-8 bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 hover:shadow-md transition-all duration-300 group">
-          <div className="relative h-[360px] sm:h-[460px] bg-gray-900 overflow-hidden">
-            <img 
-              src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1200&q=80" 
-              alt="Obras de Revitalização"
-              className="w-full h-full object-cover opacity-85 group-hover:scale-105 transition duration-700 ease-out"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-            <div className="absolute top-5 left-5 flex gap-2">
-              <span className="bg-[#0808F5] text-white text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider shadow">
-                CIDADE
-              </span>
-              <span className="bg-[#FF0808] text-white text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider shadow animate-pulse">
-                DESTAQUE
-              </span>
-            </div>
-            <div className="absolute bottom-8 left-6 right-6 sm:left-8 sm:right-8 text-white space-y-3">
-              <div className="flex items-center gap-3 text-xs text-gray-300 font-medium">
-                <span>Por Redação Tambaú</span>
-                <span>•</span>
-                <span>Hoje às 09:42</span>
-              </div>
-              <a href="/noticias/obras-praca-central" className="block">
-                <h1 className="text-2xl sm:text-4xl font-extrabold leading-tight hover:text-blue-200 transition-colors">
-                  Obras de revitalização da Praça Central entram na fase final em Tambaú
-                </h1>
-              </a>
-              <p className="text-sm text-gray-200 line-clamp-2 font-normal hidden sm:block">
-                O novo projeto contempla iluminação em LED, piso tátil de acessibilidade, playground infantil reformado e espaço para feiras de artesanato local.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* 4 Notícias Secundárias com Cards Arredondados */}
-        <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-          {[
-            { cat: "SEGURANÇA", title: "Polícia Militar reforça patrulhamento ostensivo na área comercial", time: "09:15" },
-            { cat: "ESPORTES", title: "Campeonato Amador de Futebol começa neste domingo no Estádio Municipal", time: "08:37" },
-            { cat: "SAÚDE", title: "Campanha de vacinação atende em todos os postos de saúde da cidade", time: "Ontem" },
-            { cat: "EDUCAÇÃO", title: "Escolas da rede municipal recebem novos computadores e notebooks", time: "Ontem" }
-          ].map((item, idx) => (
-            <div key={idx} className="bg-white p-5 rounded-2xl shadow-sm border border-gray-100 hover:border-[#0808F5] hover:shadow-md transition-all duration-300 flex flex-col justify-between">
-              <div>
-                <div className="flex justify-between items-center text-[11px] font-black mb-2">
-                  <span className="text-[#0808F5] uppercase tracking-wider">{item.cat}</span>
-                  <span className="text-gray-400 font-semibold">{item.time}</span>
-                </div>
-                <a href="/noticias/exemplo" className="font-bold text-[#1A1A1A] text-sm leading-snug hover:text-[#0808F5] transition line-clamp-2">
-                  {item.title}
-                </a>
-              </div>
-              <a href="/noticias/exemplo" className="text-[11px] font-extrabold text-[#0808F5] uppercase mt-3 flex items-center gap-1 hover:underline">
-                Ler matéria <ArrowRight size={12} />
-              </a>
-            </div>
-          ))}
-        </div>
-
       </section>
 
-      {/* LINHA DO TEMPO E SIDEBAR */}
-      <section className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-        
-        {/* Feed de Últimas Notícias (8 Cols) */}
-        <div className="lg:col-span-8 space-y-6">
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-            <h2 className="text-lg font-black text-[#0808F5] border-b-2 border-blue-50 pb-3 mb-6 uppercase tracking-wider flex items-center justify-between">
-              <span className="flex items-center gap-2"><TrendingUp size={20} /> Últimas Notícias</span>
-              <span className="text-xs font-normal text-gray-400">Atualizado continuamente</span>
-            </h2>
-
-            <div className="divide-y divide-gray-100">
-              {[1, 2, 3, 4, 5].map((item) => (
-                <div key={item} className="py-4 flex flex-col sm:flex-row gap-5 items-start hover:bg-gray-50/80 p-3 rounded-2xl transition-all duration-200">
-                  <div className="w-full sm:w-44 h-28 bg-gray-200 rounded-2xl overflow-hidden shrink-0 shadow-sm">
-                    <img 
-                      src={`https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80`} 
-                      alt="Notícia"
-                      className="w-full h-full object-cover hover:scale-105 transition duration-500"
-                    />
-                  </div>
-                  <div className="flex-grow space-y-1.5">
-                    <div className="flex items-center gap-2 text-xs text-gray-400">
-                      <span className="font-black text-[#FF0808]">0{item}:20</span>
-                      <span>•</span>
-                      <span className="font-extrabold text-[#0808F5] uppercase">Região</span>
-                    </div>
-                    <a href="/noticias/exemplo">
-                      <h3 className="font-extrabold text-[#1A1A1A] text-base hover:text-[#0808F5] transition leading-snug">
-                        Prefeitura anuncia novos recursos para estradas rurais e escoamento agrícola
-                      </h3>
-                    </a>
-                    <p className="text-xs text-gray-500 line-clamp-2 font-normal">
-                      Investimento visa melhorar o acesso dos produtores rurais e transportar a produção local com segurança.
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+      <section className="grid gap-6 lg:grid-cols-[minmax(0,1.7fr)_minmax(300px,0.8fr)]">
+        <article className="group relative min-h-[430px] overflow-hidden rounded-[2rem] bg-slate-900 shadow-lg">
+          <img src="https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&w=1400&q=85" alt="Praça central de Tambaú em obras de revitalização" className="absolute inset-0 size-full object-cover transition duration-700 group-hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/45 to-transparent" />
+          <div className="absolute inset-x-0 bottom-0 p-6 text-white sm:p-9"><div className="mb-4 flex flex-wrap gap-2"><span className="rounded-full bg-blue-600 px-3 py-1 text-[10px] font-black uppercase tracking-widest">Cidade</span><span className="rounded-full bg-red-500 px-3 py-1 text-[10px] font-black uppercase tracking-widest">Destaque</span></div><p className="mb-2 flex items-center gap-2 text-xs font-semibold text-slate-300"><Clock3 data-icon="inline-start" /> Hoje, 09:42 · Redação Tambaú</p><a href="/noticias/obras-praca-central"><h1 className="max-w-3xl text-2xl font-extrabold leading-tight tracking-tight transition hover:text-blue-200 sm:text-4xl">Obras de revitalização da Praça Central entram na fase final em Tambaú</h1></a><p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-300">Novo projeto contempla iluminação em LED, acessibilidade, playground reformado e espaço para feiras de artesanato local.</p></div>
+        </article>
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center justify-between"><h2 className="text-lg font-black tracking-tight text-slate-950 dark:text-white">Em alta agora</h2><span className="text-xs font-bold text-blue-600">Atualizado hoje</span></div>
+          {secondaryNews.map((item) => <a key={item.title} href="/noticias/exemplo" className="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:-translate-y-0.5 hover:border-blue-300 hover:shadow-md dark:border-slate-800 dark:bg-slate-900"><div className="mb-3 flex items-center justify-between text-[10px] font-black uppercase tracking-widest"><span className="text-blue-600">{item.category}</span><span className="text-slate-400">{item.time}</span></div><h3 className="text-sm font-extrabold leading-snug text-slate-900 transition group-hover:text-blue-600 dark:text-white">{item.title}</h3><span className="mt-4 inline-flex items-center gap-1 text-[11px] font-black uppercase text-slate-400">Ler matéria <ChevronRight data-icon="inline-end" /></span></a>)}
         </div>
-
-        {/* SIDEBAR COM WIDGETS ARREDONDADOS */}
-        <aside className="lg:col-span-4 space-y-6">
-          
-          {/* MÓDULO OBITUÁRIO */}
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
-              <h3 className="font-black text-sm text-[#1A1A1A] uppercase tracking-wider flex items-center gap-2">
-                <Cross size={18} className="text-[#0808F5]" /> Obituário
-              </h3>
-              <a href="/obituario" className="text-[11px] font-bold text-[#0808F5] uppercase hover:underline">Ver Todos</a>
-            </div>
-            <div className="bg-gray-50/80 p-4 rounded-2xl border border-gray-100 text-xs">
-              <p className="font-extrabold text-gray-900 text-sm">Maria Aparecida Silva</p>
-              <p className="text-gray-500 text-[11px] mt-0.5">74 anos • Falecida ontem</p>
-              <div className="mt-3 text-[11px] text-gray-700 space-y-1 border-t border-gray-200/60 pt-2.5">
-                <p><strong>Velório:</strong> Velório Municipal de Tambaú</p>
-                <p><strong>Sepultamento:</strong> Hoje às 16:00h no Cemitério Local</p>
-              </div>
-            </div>
-          </div>
-
-          {/* GUIA COMERCIAL */}
-          <div className="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
-            <div className="flex items-center justify-between border-b border-gray-100 pb-3 mb-4">
-              <h3 className="font-black text-sm text-[#1A1A1A] uppercase tracking-wider flex items-center gap-2">
-                <Building2 size={18} className="text-[#0808F5]" /> Guia Comercial
-              </h3>
-              <a href="/guia-comercial" className="text-[11px] font-bold text-[#0808F5] uppercase hover:underline">Ver Guia</a>
-            </div>
-            <div className="p-3.5 border rounded-2xl flex items-center justify-between bg-gray-50/80 border-gray-100">
-              <div>
-                <span className="text-[9px] font-black text-[#FF0808] uppercase tracking-wider">Patrocinado</span>
-                <p className="font-bold text-xs text-gray-900">Supermercado Tambaú</p>
-                <p className="text-[11px] text-gray-500">Rua Dr. Alfredo, 120 - Centro</p>
-              </div>
-              <a href="/guia-comercial" className="text-xs bg-[#0808F5] text-white px-3 py-1.5 rounded-full font-bold shadow-sm">Ver</a>
-            </div>
-          </div>
-
-        </aside>
-
       </section>
 
-      {/* BLOCO NEWSLETTER ARREDONDADO */}
-      <section className="bg-gradient-to-br from-[#0808F5] to-blue-900 text-white p-10 rounded-3xl shadow-lg text-center max-w-4xl mx-auto">
-        <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-wide">
-          RECEBA AS PRINCIPAIS NOTÍCIAS DE TAMBAÚ
-        </h3>
-        <p className="text-xs sm:text-sm text-blue-100 mt-2 max-w-xl mx-auto font-medium">
-          Fique por dentro do que acontece na cidade diretamente no seu e-mail. Cadastro rápido e gratuito.
-        </p>
-        <form className="mt-8 flex flex-col sm:flex-row gap-3 max-w-lg mx-auto">
-          <input
-            type="text"
-            placeholder="Seu Nome"
-            className="px-5 py-3 rounded-full text-xs text-gray-900 outline-none flex-1 font-medium shadow-inner"
-            required
-          />
-          <input
-            type="email"
-            placeholder="Seu E-mail"
-            className="px-5 py-3 rounded-full text-xs text-gray-900 outline-none flex-1 font-medium shadow-inner"
-            required
-          />
-          <button
-            type="submit"
-            className="bg-[#FF0808] hover:bg-red-700 text-white font-extrabold px-8 py-3 rounded-full text-xs uppercase tracking-wider transition shadow-md hover:scale-105"
-          >
-            CADASTRAR
-          </button>
-        </form>
+      <section className="grid gap-8 lg:grid-cols-[minmax(0,1.7fr)_minmax(280px,0.8fr)]">
+        <div className="rounded-[2rem] border border-slate-200 bg-white p-5 shadow-sm sm:p-7 dark:border-slate-800 dark:bg-slate-900"><div className="mb-5 flex items-end justify-between border-b border-slate-100 pb-4 dark:border-slate-800"><div><p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Acompanhe Tambaú</p><h2 className="mt-1 text-2xl font-black tracking-tight text-slate-950 dark:text-white">Últimas notícias</h2></div><TrendingUp className="text-blue-600" /></div><div className="flex flex-col divide-y divide-slate-100 dark:divide-slate-800">{latestNews.map((news) => <article key={news.title} className="flex gap-4 py-5 first:pt-1"><img src={news.image} alt="" className="size-24 shrink-0 rounded-xl object-cover sm:size-32" /><div><p className="mb-2 text-[10px] font-black uppercase tracking-widest text-red-500">{news.category}</p><a href="/noticias/exemplo"><h3 className="text-base font-extrabold leading-snug text-slate-900 transition hover:text-blue-600 dark:text-white">{news.title}</h3></a><p className="mt-2 hidden text-xs leading-relaxed text-slate-500 sm:block">{news.summary}</p><p className="mt-3 text-[11px] font-semibold text-slate-400">Há {news.category === "CIDADE" ? "20 minutos" : "1 hora"}</p></div></article>)}</div><a href="/#noticias" className="mt-3 inline-flex items-center gap-2 text-xs font-black uppercase tracking-wide text-blue-600">Ver todas as notícias <ArrowRight data-icon="inline-end" /></a></div>
+        <aside className="flex flex-col gap-5"><div className="rounded-[2rem] bg-blue-600 p-6 text-white shadow-lg"><div className="flex items-center justify-between"><div><p className="text-[10px] font-black uppercase tracking-[0.2em] text-blue-200">Agenda da cidade</p><h2 className="mt-1 text-xl font-black">O que acontece hoje</h2></div><CalendarDays /></div><div className="mt-6 border-t border-blue-400/50 pt-5"><p className="font-extrabold">Feira de Artesanato</p><p className="mt-1 text-xs text-blue-100">Praça Central · 18h</p></div><a href="/eventos" className="mt-5 inline-flex items-center gap-1 text-xs font-black uppercase text-white">Ver agenda completa <ArrowRight data-icon="inline-end" /></a></div><div className="rounded-[2rem] border border-slate-200 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900"><div className="mb-4 flex items-center justify-between"><h2 className="flex items-center gap-2 text-sm font-black uppercase tracking-wider text-slate-900 dark:text-white"><Cross className="text-blue-600" /> Obituário</h2><a href="/obituario" className="text-[10px] font-black uppercase text-blue-600">Ver todos</a></div><p className="font-extrabold text-slate-900 dark:text-white">Maria Aparecida Silva</p><p className="mt-1 text-xs text-slate-500">74 anos · Falecida ontem</p><div className="mt-4 border-t border-slate-100 pt-3 text-xs text-slate-500 dark:border-slate-800"><p><strong className="text-slate-700 dark:text-slate-300">Velório:</strong> Municipal de Tambaú</p><p className="mt-2"><strong className="text-slate-700 dark:text-slate-300">Sepultamento:</strong> Hoje às 16h</p></div></div></aside>
       </section>
 
+      <section className="overflow-hidden rounded-[2rem] bg-slate-950 px-6 py-10 text-center text-white sm:px-10"><Bell className="mx-auto text-red-400" /><h2 className="mt-3 text-2xl font-black tracking-tight sm:text-3xl">Notícia boa é notícia que chega.</h2><p className="mx-auto mt-2 max-w-lg text-sm text-slate-400">Receba os principais acontecimentos de Tambaú direto no seu e-mail.</p><form className="mx-auto mt-6 flex max-w-xl flex-col gap-3 sm:flex-row"><input aria-label="Seu e-mail" type="email" placeholder="Seu melhor e-mail" className="min-w-0 flex-1 rounded-full border-0 px-5 py-3 text-sm text-slate-900 outline-none ring-blue-400 focus:ring-2" required /><button className="rounded-full bg-red-500 px-6 py-3 text-xs font-black uppercase tracking-wide transition hover:bg-red-400">Quero receber</button></form></section>
     </main>
-  );
+  )
 }

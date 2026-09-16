@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import React from "react";
-import { Search, Menu, MessageCircle, AlertCircle, Phone, Mail, MapPin } from "lucide-react";
+import { MessageCircle, AlertCircle, Phone, Mail, MapPin } from "lucide-react";
+import { SiteHeader } from "../components/site-header";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -14,24 +15,6 @@ export const metadata: Metadata = {
   title: "TAMBAÚ ONLINE - Informação que conecta Tambaú",
   description: "O portal oficial de notícias, guia comercial, empregos, classificados e eventos de Tambaú, SP.",
 };
-
-const CATEGORIES = [
-  { name: "Início", href: "/" },
-  { name: "Notícias", href: "/#noticias" },
-  { name: "Cidade", href: "/#cidade" },
-  { name: "Política", href: "/#politica" },
-  { name: "Segurança", href: "/#seguranca" },
-  { name: "Esportes", href: "/#esportes" },
-  { name: "Saúde", href: "/#saude" },
-  { name: "Educação", href: "/#educacao" },
-  { name: "Eventos", href: "/eventos" },
-  { name: "Região", href: "/#regiao" },
-  { name: "Obituário", href: "/obituario" },
-  { name: "Classificados", href: "/classificados" },
-  { name: "Guia Comercial", href: "/guia-comercial" },
-  { name: "Empregos", href: "/empregos" },
-  { name: "Anuncie", href: "/anuncie" },
-];
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -56,73 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
 
-        {/* 2. HEADER COM A SUA LOGO GRANDE */}
-        <header className="bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 px-4 sticky top-0 z-40 shadow-sm transition-all">
-          <div className="container mx-auto flex items-center justify-between gap-6">
-            
-            <a href="/" className="flex items-center group shrink-0 py-1">
-              <img
-                src="/logo.png"
-                alt="Tambaú Online"
-                className="h-16 sm:h-20 md:h-24 w-auto object-contain transition-transform group-hover:scale-105 duration-300"
-              />
-            </a>
-
-            <div className="hidden lg:flex items-center gap-4">
-              <form action="/#noticias" className="relative">
-                <input
-                  type="text"
-                  placeholder="Buscar no Tambaú Online..."
-                  className="bg-gray-100 text-xs font-medium rounded-full py-2.5 pl-5 pr-10 border border-transparent focus:border-[#0808F5] focus:bg-white outline-none w-72 transition-all shadow-inner"
-                />
-                <button type="submit" className="absolute right-3.5 top-3 text-gray-400 hover:text-[#0808F5]">
-                  <Search size={16} />
-                </button>
-              </form>
-
-              <a
-                href="/envie-noticia"
-                className="bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold px-5 py-2.5 rounded-full text-xs transition uppercase tracking-wider"
-              >
-                Envie Notícia
-              </a>
-
-              <a
-                href="/anuncie"
-                className="bg-[#FF0808] hover:bg-red-700 text-white font-extrabold px-6 py-2.5 rounded-full text-xs transition uppercase tracking-wider shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
-              >
-                Anuncie
-              </a>
-            </div>
-
-            <div className="lg:hidden flex items-center gap-2">
-              <a href="/anuncie" className="bg-[#FF0808] text-white text-xs font-bold px-4 py-2 rounded-full uppercase shadow">
-                Anuncie
-              </a>
-              <button className="text-gray-800 p-2 rounded-full bg-gray-100">
-                <Menu size={22} />
-              </button>
-            </div>
-
-          </div>
-        </header>
-
-        {/* 3. MENU DE NAVEGAÇÃO */}
-        <nav className="bg-[#0808F5] text-white shadow-md sticky top-[88px] sm:top-[104px] z-30 overflow-x-auto scrollbar-none">
-          <div className="container mx-auto flex items-center whitespace-nowrap text-[12px] font-bold tracking-wide">
-            {CATEGORIES.map((cat, idx) => (
-              <a
-                key={idx}
-                href={cat.href}
-                className={`py-3.5 px-4.5 hover:bg-blue-800 transition-colors flex items-center gap-1 shrink-0 ${
-                  idx === 0 ? "bg-blue-900" : ""
-                }`}
-              >
-                {cat.name}
-              </a>
-            ))}
-          </div>
-        </nav>
+        <SiteHeader />
 
         {/* 4. CONTEÚDO */}
         <div className="flex-grow">{children}</div>
