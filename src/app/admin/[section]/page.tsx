@@ -13,7 +13,8 @@ const sections: Record<string, { title: string; description: string }> = {
   configuracoes: { title: 'Configurações', description: 'Ajuste as preferências editoriais e comerciais do portal.' },
 }
 
-export default function AdminSectionPage({ params }: { params: { section: string } }) {
-  const section = sections[params.section] ?? { title: 'Seção administrativa', description: 'Esta área está pronta para receber os dados do seu portal.' }
+export default async function AdminSectionPage({ params }: { params: Promise<{ section: string }> }) {
+  const { section: sectionKey } = await params
+  const section = sections[sectionKey] ?? { title: 'Seção administrativa', description: 'Esta área está pronta para receber os dados do seu portal.' } 
   return <section className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm"><p className="text-xs font-bold uppercase tracking-[0.18em] text-[#0808F5]">Painel CMS</p><h2 className="mt-3 text-3xl font-black text-slate-950">{section.title}</h2><p className="mt-2 max-w-xl text-slate-500">{section.description}</p><div className="mt-8 rounded-xl border border-dashed border-slate-300 bg-slate-50 p-8 text-center"><p className="font-bold text-slate-700">Nenhum item cadastrado ainda</p><p className="mt-1 text-sm text-slate-500">Os registros desta seção aparecerão aqui quando forem adicionados.</p><Link href="/admin" className="mt-5 inline-flex rounded-lg bg-[#0808F5] px-4 py-2 text-sm font-bold text-white">Voltar ao dashboard</Link></div></section>
 }
